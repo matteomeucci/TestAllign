@@ -1,0 +1,10 @@
+C:\Users\m.meucci\Desktop\Temp\TestAllign\Database\bin\Debug\Database.dll.config
+C:\Users\m.meucci\Desktop\Temp\TestAllign\Database\bin\Debug\Database.dll
+C:\Users\m.meucci\Desktop\Temp\TestAllign\Database\bin\Debug\Database.pdb
+C:\Users\m.meucci\Desktop\Temp\TestAllign\Database\bin\Debug\EntityFramework.dll
+C:\Users\m.meucci\Desktop\Temp\TestAllign\Database\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\m.meucci\Desktop\Temp\TestAllign\Database\bin\Debug\EntityFramework.xml
+C:\Users\m.meucci\Desktop\Temp\TestAllign\Database\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\m.meucci\Desktop\Temp\TestAllign\Database\obj\Debug\Database.dll
+C:\Users\m.meucci\Desktop\Temp\TestAllign\Database\obj\Debug\Database.pdb
+C:\Users\m.meucci\Desktop\Temp\TestAllign\Database\obj\Debug\Database.csprojResolveAssemblyReference.cache

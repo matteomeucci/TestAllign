@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4cf5f0587b854559ad85f05b169c64d0" Name="Diagram1">
+        <EntityTypeShape EntityType="APSWDatabaseModel.Alarms" Width="1.5" PointX="3" PointY="44.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.AnalogChannelsScaling" Width="1.5" PointX="3" PointY="47.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.AuxiliaryResults" Width="1.5" PointX="9" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.CustomTest" Width="1.5" PointX="5.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.ExecutionAuxiliaryResults" Width="1.5" PointX="8.25" PointY="34" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.ExecutionParameters" Width="1.5" PointX="3" PointY="24.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.ExecutionResults" Width="1.5" PointX="6" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.Executions" Width="1.5" PointX="0.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.GlobalParameters" Width="1.5" PointX="3" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.MainConfigurations" Width="1.5" PointX="0.75" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.MiscDataLocal" Width="1.5" PointX="3" PointY="51.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.MiscDataTest" Width="1.5" PointX="5.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.Parameters" Width="1.5" PointX="3" PointY="29" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.ParametersValues" Width="1.5" PointX="5.25" PointY="33.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.PartNumbers" Width="1.5" PointX="3.75" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.Permissions" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.Phases" Width="1.5" PointX="0.75" PointY="40.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.PNProperties" Width="1.5" PointX="9" PointY="24.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.PNSNProperties" Width="1.5" PointX="6" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.PNTests" Width="1.5" PointX="12" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.Results" Width="1.5" PointX="6" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.ResultsConstraints" Width="1.5" PointX="11.25" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.ResultStatuses" Width="1.5" PointX="1.5" PointY="33.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.RolePermissions" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.Roles" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.SerialNumbers" Width="1.5" PointX="4.5" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.ShowedAuxiliaryResults" Width="1.5" PointX="11.25" PointY="26.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.SNGenerator" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.SNInformations" Width="1.5" PointX="6.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.SNProperties" Width="1.5" PointX="9" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.SNTestPhases" Width="1.5" PointX="1.5" PointY="36.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.TestCompositionProperties" Width="1.5" PointX="3" PointY="59" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.TestCompositionPropertiesValues" Width="1.5" PointX="5.25" PointY="58.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.TestCompositions" Width="1.5" PointX="3" PointY="54.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.TestPhases" Width="1.5" PointX="3" PointY="40" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.TestProperties" Width="1.5" PointX="9" PointY="29.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.Tests" Width="1.5" PointX="6.75" PointY="38.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.Types" Width="1.5" PointX="0.75" PointY="24.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="APSWDatabaseModel.Users" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_Alarms_MainConfigurations" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_AnalogChannelsScaling_MainConfigurations" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_ShowedAuxiliaryResults_AuxiliaryResults" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_ExecutionAuxiliaryResults_ExecutionResults" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_ExecutionParameters_Types" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_ExecutionsParameters_Execution" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_ExecutionResults_ResultStatuses" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_ExecutionResults_Types" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_ExecutionsResults_Execution" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_Executions_ResultStatuses" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_Executions_SerialNumbers" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_Executions_SNTestPhases" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_GlobalParameters_MainConfigurations" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_GlobalParameters_Types" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_MiscDataLocal_MainConfigurations" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_SNGenerator_MainConfigurations" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_Parameters_Phases" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_Parameters_Types" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_ParametersValues_Parameters" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_ParametersValues_TestPhases" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_PNProperties_PartNumbers" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_PNSNProperties_PartNumbers" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_PNTests_PartNumbers" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_RolePermissions_Permissions" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_Results_Phases" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_TestPhases_Phases" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_PNProperties_Types" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_PNSNProperties_Types" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_PNTests_Tests" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_Results_Types" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_ResultsConstraints_Results" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_ShowedAuxiliaryResults_Results" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_ResultsConstraints_TestPhases" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_RolePermissions_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_Users_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_SNInformations_SerialNumbers" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_SNProperties_SNInformations" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_SNTestPhases_SNInformations" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_SNProperties_Types" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_TestCompositionProperties_Types1" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_TestCompositionPropertiesValues_TestCompositionProperties" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_TestCompositionProperties_TestCompositions" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_TestComposition_TestPhases" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_TestCompositions_Tests" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_TestProperties_Tests" ManuallyRouted="false" />
+        <AssociationConnector Association="APSWDatabaseModel.FK_TestProperties_Types" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

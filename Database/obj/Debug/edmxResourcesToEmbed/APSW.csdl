@@ -1,0 +1,1370 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="APSWDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Alarms">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MainConfiguration" Type="Int32" Nullable="false" />
+    <Property Name="Set" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Index" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="MainConfigurations" Relationship="Self.FK_Alarms_MainConfigurations" FromRole="Alarms" ToRole="MainConfigurations" />
+  </EntityType>
+  <EntityType Name="AnalogChannelsScaling">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MainConfiguration" Type="Int32" Nullable="false" />
+    <Property Name="Set" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Index" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RawMin" Type="Double" Nullable="false" />
+    <Property Name="RawMax" Type="Double" Nullable="false" />
+    <Property Name="RawUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EngMin" Type="Double" Nullable="false" />
+    <Property Name="EngMax" Type="Double" Nullable="false" />
+    <Property Name="EngUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Decimals" Type="Int32" Nullable="false" />
+    <Property Name="Filter" Type="Double" Nullable="false" />
+    <NavigationProperty Name="MainConfigurations" Relationship="Self.FK_AnalogChannelsScaling_MainConfigurations" FromRole="AnalogChannelsScaling" ToRole="MainConfigurations" />
+  </EntityType>
+  <EntityType Name="AuxiliaryResults">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Index" Type="Int32" Nullable="false" />
+    <Property Name="Decimals" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ShowedAuxiliaryResults" Relationship="Self.FK_ShowedAuxiliaryResults_AuxiliaryResults" FromRole="AuxiliaryResults" ToRole="ShowedAuxiliaryResults" />
+  </EntityType>
+  <EntityType Name="CustomTest">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReferenceID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TestInfo" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ExecutionAuxiliaryResults">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ExecutionResult" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Index" Type="Int32" Nullable="false" />
+    <Property Name="Show" Type="Boolean" Nullable="false" />
+    <Property Name="DoubleValue" Type="Double" Nullable="false" />
+    <Property Name="Decimals" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ExecutionResults" Relationship="Self.FK_ExecutionAuxiliaryResults_ExecutionResults" FromRole="ExecutionAuxiliaryResults" ToRole="ExecutionResults" />
+  </EntityType>
+  <EntityType Name="ExecutionParameters">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Execution" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="Int32" Nullable="false" />
+    <Property Name="Index" Type="Int32" Nullable="false" />
+    <Property Name="BoolValue" Type="Boolean" Nullable="false" />
+    <Property Name="IntValue" Type="Int32" Nullable="false" />
+    <Property Name="DoubleValue" Type="Double" Nullable="false" />
+    <Property Name="StringValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GraphValue" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Types" Relationship="Self.FK_ExecutionParameters_Types" FromRole="ExecutionParameters" ToRole="Types" />
+    <NavigationProperty Name="Executions" Relationship="Self.FK_ExecutionsParameters_Execution" FromRole="ExecutionParameters" ToRole="Executions" />
+  </EntityType>
+  <EntityType Name="ExecutionResults">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Execution" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="Int32" Nullable="false" />
+    <Property Name="Index" Type="Int32" Nullable="false" />
+    <Property Name="ReportIndex" Type="Int32" Nullable="false" />
+    <Property Name="Decimals" Type="Int32" Nullable="false" />
+    <Property Name="BoolExpected" Type="Boolean" Nullable="false" />
+    <Property Name="Min" Type="Double" Nullable="false" />
+    <Property Name="Max" Type="Double" Nullable="false" />
+    <Property Name="StringsExpected" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GraphBands" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="BoolValue" Type="Boolean" Nullable="false" />
+    <Property Name="IntValue" Type="Int32" Nullable="false" />
+    <Property Name="DoubleValue" Type="Double" Nullable="false" />
+    <Property Name="StringValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GraphValue" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="ResultStatus" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ExecutionAuxiliaryResults" Relationship="Self.FK_ExecutionAuxiliaryResults_ExecutionResults" FromRole="ExecutionResults" ToRole="ExecutionAuxiliaryResults" />
+    <NavigationProperty Name="ResultStatuses" Relationship="Self.FK_ExecutionResults_ResultStatuses" FromRole="ExecutionResults" ToRole="ResultStatuses" />
+    <NavigationProperty Name="Types" Relationship="Self.FK_ExecutionResults_Types" FromRole="ExecutionResults" ToRole="Types" />
+    <NavigationProperty Name="Executions" Relationship="Self.FK_ExecutionsResults_Execution" FromRole="ExecutionResults" ToRole="Executions" />
+  </EntityType>
+  <EntityType Name="Executions">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SerialNumber" Type="Int32" Nullable="false" />
+    <Property Name="SNTestPhase" Type="Int32" Nullable="false" />
+    <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="ResultStatus" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ExecutionParameters" Relationship="Self.FK_ExecutionsParameters_Execution" FromRole="Executions" ToRole="ExecutionParameters" />
+    <NavigationProperty Name="ExecutionResults" Relationship="Self.FK_ExecutionsResults_Execution" FromRole="Executions" ToRole="ExecutionResults" />
+    <NavigationProperty Name="ResultStatuses" Relationship="Self.FK_Executions_ResultStatuses" FromRole="Executions" ToRole="ResultStatuses" />
+    <NavigationProperty Name="SerialNumbers" Relationship="Self.FK_Executions_SerialNumbers" FromRole="Executions" ToRole="SerialNumbers" />
+    <NavigationProperty Name="SNTestPhases" Relationship="Self.FK_Executions_SNTestPhases" FromRole="Executions" ToRole="SNTestPhases" />
+  </EntityType>
+  <EntityType Name="GlobalParameters">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MainConfiguration" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Editable" Type="Boolean" Nullable="false" />
+    <Property Name="Type" Type="Int32" Nullable="false" />
+    <Property Name="Index" Type="Int32" Nullable="false" />
+    <Property Name="BoolValue" Type="Boolean" Nullable="false" />
+    <Property Name="IntValue" Type="Int32" Nullable="false" />
+    <Property Name="DoubleValue" Type="Double" Nullable="false" />
+    <Property Name="StringValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GraphValue" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="MainConfigurations" Relationship="Self.FK_GlobalParameters_MainConfigurations" FromRole="GlobalParameters" ToRole="MainConfigurations" />
+    <NavigationProperty Name="Types" Relationship="Self.FK_GlobalParameters_Types" FromRole="GlobalParameters" ToRole="Types" />
+  </EntityType>
+  <EntityType Name="MainConfigurations">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="ContextConfiguration" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Alarms" Relationship="Self.FK_Alarms_MainConfigurations" FromRole="MainConfigurations" ToRole="Alarms" />
+    <NavigationProperty Name="AnalogChannelsScaling" Relationship="Self.FK_AnalogChannelsScaling_MainConfigurations" FromRole="MainConfigurations" ToRole="AnalogChannelsScaling" />
+    <NavigationProperty Name="GlobalParameters" Relationship="Self.FK_GlobalParameters_MainConfigurations" FromRole="MainConfigurations" ToRole="GlobalParameters" />
+    <NavigationProperty Name="MiscDataLocal" Relationship="Self.FK_MiscDataLocal_MainConfigurations" FromRole="MainConfigurations" ToRole="MiscDataLocal" />
+    <NavigationProperty Name="SNGenerator" Relationship="Self.FK_SNGenerator_MainConfigurations" FromRole="MainConfigurations" ToRole="SNGenerator" />
+  </EntityType>
+  <EntityType Name="MiscDataLocal">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MainConfiguration" Type="Int32" Nullable="false" />
+    <Property Name="Key1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Key2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Key3" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="MainConfigurations" Relationship="Self.FK_MiscDataLocal_MainConfigurations" FromRole="MiscDataLocal" ToRole="MainConfigurations" />
+  </EntityType>
+  <EntityType Name="MiscDataTest">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Key1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Key2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Key3" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Parameters">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Phase" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="Int32" Nullable="false" />
+    <Property Name="Index" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Phases" Relationship="Self.FK_Parameters_Phases" FromRole="Parameters" ToRole="Phases" />
+    <NavigationProperty Name="Types" Relationship="Self.FK_Parameters_Types" FromRole="Parameters" ToRole="Types" />
+    <NavigationProperty Name="ParametersValues" Relationship="Self.FK_ParametersValues_Parameters" FromRole="Parameters" ToRole="ParametersValues" />
+  </EntityType>
+  <EntityType Name="ParametersValues">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TestPhase" Type="Int32" Nullable="false" />
+    <Property Name="Parameter" Type="Int32" Nullable="false" />
+    <Property Name="BoolValue" Type="Boolean" Nullable="false" />
+    <Property Name="IntValue" Type="Int32" Nullable="false" />
+    <Property Name="DoubleValue" Type="Double" Nullable="false" />
+    <Property Name="StringValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GraphValue" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="SaveInExecutions" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Parameters" Relationship="Self.FK_ParametersValues_Parameters" FromRole="ParametersValues" ToRole="Parameters" />
+    <NavigationProperty Name="TestPhases" Relationship="Self.FK_ParametersValues_TestPhases" FromRole="ParametersValues" ToRole="TestPhases" />
+  </EntityType>
+  <EntityType Name="PartNumbers">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="PNProperties" Relationship="Self.FK_PNProperties_PartNumbers" FromRole="PartNumbers" ToRole="PNProperties" />
+    <NavigationProperty Name="PNSNProperties" Relationship="Self.FK_PNSNProperties_PartNumbers" FromRole="PartNumbers" ToRole="PNSNProperties" />
+    <NavigationProperty Name="PNTests" Relationship="Self.FK_PNTests_PartNumbers" FromRole="PartNumbers" ToRole="PNTests" />
+  </EntityType>
+  <EntityType Name="Permissions">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Editable" Type="Boolean" Nullable="false" />
+    <Property Name="ShowInConfiguration" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="RolePermissions" Relationship="Self.FK_RolePermissions_Permissions" FromRole="Permissions" ToRole="RolePermissions" />
+  </EntityType>
+  <EntityType Name="Phases">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ReferenceID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Parameters" Relationship="Self.FK_Parameters_Phases" FromRole="Phases" ToRole="Parameters" />
+    <NavigationProperty Name="Results" Relationship="Self.FK_Results_Phases" FromRole="Phases" ToRole="Results" />
+    <NavigationProperty Name="TestPhases" Relationship="Self.FK_TestPhases_Phases" FromRole="Phases" ToRole="TestPhases" />
+  </EntityType>
+  <EntityType Name="PNProperties">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PartNumber" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="Int32" Nullable="false" />
+    <Property Name="Index" Type="Int32" Nullable="false" />
+    <Property Name="BoolValue" Type="Boolean" Nullable="false" />
+    <Property Name="IntValue" Type="Int32" Nullable="false" />
+    <Property Name="DoubleValue" Type="Double" Nullable="false" />
+    <Property Name="StringValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GraphValue" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="PartNumbers" Relationship="Self.FK_PNProperties_PartNumbers" FromRole="PNProperties" ToRole="PartNumbers" />
+    <NavigationProperty Name="Types" Relationship="Self.FK_PNProperties_Types" FromRole="PNProperties" ToRole="Types" />
+  </EntityType>
+  <EntityType Name="PNSNProperties">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PartNumber" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="Int32" Nullable="false" />
+    <Property Name="Index" Type="Int32" Nullable="false" />
+    <Property Name="BoolValue" Type="Boolean" Nullable="false" />
+    <Property Name="IntValue" Type="Int32" Nullable="false" />
+    <Property Name="DoubleValue" Type="Double" Nullable="false" />
+    <Property Name="StringValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GraphValue" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="PartNumbers" Relationship="Self.FK_PNSNProperties_PartNumbers" FromRole="PNSNProperties" ToRole="PartNumbers" />
+    <NavigationProperty Name="Types" Relationship="Self.FK_PNSNProperties_Types" FromRole="PNSNProperties" ToRole="Types" />
+  </EntityType>
+  <EntityType Name="PNTests">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PartNumber" Type="Int32" Nullable="false" />
+    <Property Name="Test" Type="Int32" Nullable="false" />
+    <Property Name="Default" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="PartNumbers" Relationship="Self.FK_PNTests_PartNumbers" FromRole="PNTests" ToRole="PartNumbers" />
+    <NavigationProperty Name="Tests" Relationship="Self.FK_PNTests_Tests" FromRole="PNTests" ToRole="Tests" />
+  </EntityType>
+  <EntityType Name="Results">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Phase" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="Int32" Nullable="false" />
+    <Property Name="Index" Type="Int32" Nullable="false" />
+    <Property Name="ReportIndex" Type="Int32" Nullable="false" />
+    <Property Name="Decimals" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Phases" Relationship="Self.FK_Results_Phases" FromRole="Results" ToRole="Phases" />
+    <NavigationProperty Name="Types" Relationship="Self.FK_Results_Types" FromRole="Results" ToRole="Types" />
+    <NavigationProperty Name="ResultsConstraints" Relationship="Self.FK_ResultsConstraints_Results" FromRole="Results" ToRole="ResultsConstraints" />
+    <NavigationProperty Name="ShowedAuxiliaryResults" Relationship="Self.FK_ShowedAuxiliaryResults_Results" FromRole="Results" ToRole="ShowedAuxiliaryResults" />
+  </EntityType>
+  <EntityType Name="ResultsConstraints">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TestPhase" Type="Int32" Nullable="false" />
+    <Property Name="Result" Type="Int32" Nullable="false" />
+    <Property Name="BoolExpected" Type="Boolean" Nullable="false" />
+    <Property Name="Min" Type="Double" Nullable="false" />
+    <Property Name="Max" Type="Double" Nullable="false" />
+    <Property Name="StringsExpected" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GraphBands" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Enable" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Results" Relationship="Self.FK_ResultsConstraints_Results" FromRole="ResultsConstraints" ToRole="Results" />
+    <NavigationProperty Name="TestPhases" Relationship="Self.FK_ResultsConstraints_TestPhases" FromRole="ResultsConstraints" ToRole="TestPhases" />
+  </EntityType>
+  <EntityType Name="ResultStatuses">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ExecutionResults" Relationship="Self.FK_ExecutionResults_ResultStatuses" FromRole="ResultStatuses" ToRole="ExecutionResults" />
+    <NavigationProperty Name="Executions" Relationship="Self.FK_Executions_ResultStatuses" FromRole="ResultStatuses" ToRole="Executions" />
+  </EntityType>
+  <EntityType Name="RolePermissions">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Role" Type="Int32" Nullable="false" />
+    <Property Name="Permission" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Permissions" Relationship="Self.FK_RolePermissions_Permissions" FromRole="RolePermissions" ToRole="Permissions" />
+    <NavigationProperty Name="Roles" Relationship="Self.FK_RolePermissions_Roles" FromRole="RolePermissions" ToRole="Roles" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Editable" Type="Boolean" Nullable="false" />
+    <Property Name="ShowInConfiguration" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="RolePermissions" Relationship="Self.FK_RolePermissions_Roles" FromRole="Roles" ToRole="RolePermissions" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Users_Roles" FromRole="Roles" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="SerialNumbers">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Executions" Relationship="Self.FK_Executions_SerialNumbers" FromRole="SerialNumbers" ToRole="Executions" />
+    <NavigationProperty Name="SNInformations" Relationship="Self.FK_SNInformations_SerialNumbers" FromRole="SerialNumbers" ToRole="SNInformations" />
+  </EntityType>
+  <EntityType Name="ShowedAuxiliaryResults">
+    <Key>
+      <PropertyRef Name="Result" />
+      <PropertyRef Name="AuxiliaryResult" />
+    </Key>
+    <Property Name="Result" Type="Int32" Nullable="false" />
+    <Property Name="AuxiliaryResult" Type="Int32" Nullable="false" />
+    <Property Name="Show" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="AuxiliaryResults" Relationship="Self.FK_ShowedAuxiliaryResults_AuxiliaryResults" FromRole="ShowedAuxiliaryResults" ToRole="AuxiliaryResults" />
+    <NavigationProperty Name="Results" Relationship="Self.FK_ShowedAuxiliaryResults_Results" FromRole="ShowedAuxiliaryResults" ToRole="Results" />
+  </EntityType>
+  <EntityType Name="SNGenerator">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MainConfiguration" Type="Int32" Nullable="false" />
+    <Property Name="GeneratorConfiguration" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="MainConfigurations" Relationship="Self.FK_SNGenerator_MainConfigurations" FromRole="SNGenerator" ToRole="MainConfigurations" />
+  </EntityType>
+  <EntityType Name="SNInformations">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SerialNumber" Type="Int32" Nullable="false" />
+    <Property Name="PNName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PNDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Test" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TestDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="7" />
+    <NavigationProperty Name="SerialNumbers" Relationship="Self.FK_SNInformations_SerialNumbers" FromRole="SNInformations" ToRole="SerialNumbers" />
+    <NavigationProperty Name="SNProperties" Relationship="Self.FK_SNProperties_SNInformations" FromRole="SNInformations" ToRole="SNProperties" />
+    <NavigationProperty Name="SNTestPhases" Relationship="Self.FK_SNTestPhases_SNInformations" FromRole="SNInformations" ToRole="SNTestPhases" />
+  </EntityType>
+  <EntityType Name="SNProperties">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SNInformation" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="Int32" Nullable="false" />
+    <Property Name="Index" Type="Int32" Nullable="false" />
+    <Property Name="BoolValue" Type="Boolean" Nullable="false" />
+    <Property Name="IntValue" Type="Int32" Nullable="false" />
+    <Property Name="DoubleValue" Type="Double" Nullable="false" />
+    <Property Name="StringValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GraphValue" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="SNInformations" Relationship="Self.FK_SNProperties_SNInformations" FromRole="SNProperties" ToRole="SNInformations" />
+    <NavigationProperty Name="Types" Relationship="Self.FK_SNProperties_Types" FromRole="SNProperties" ToRole="Types" />
+  </EntityType>
+  <EntityType Name="SNTestPhases">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SNInformation" Type="Int32" Nullable="false" />
+    <Property Name="Index" Type="Int32" Nullable="false" />
+    <Property Name="TestPhaseName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TestPhaseDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Executions" Relationship="Self.FK_Executions_SNTestPhases" FromRole="SNTestPhases" ToRole="Executions" />
+    <NavigationProperty Name="SNInformations" Relationship="Self.FK_SNTestPhases_SNInformations" FromRole="SNTestPhases" ToRole="SNInformations" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TestCompositionProperties">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="Int32" Nullable="false" />
+    <Property Name="Index" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Types" Relationship="Self.FK_TestCompositionProperties_Types1" FromRole="TestCompositionProperties" ToRole="Types" />
+    <NavigationProperty Name="TestCompositionPropertiesValues" Relationship="Self.FK_TestCompositionPropertiesValues_TestCompositionProperties" FromRole="TestCompositionProperties" ToRole="TestCompositionPropertiesValues" />
+  </EntityType>
+  <EntityType Name="TestCompositionPropertiesValues">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TestComposition" Type="Int32" Nullable="false" />
+    <Property Name="TestCompositionProperty" Type="Int32" Nullable="false" />
+    <Property Name="BoolValue" Type="Boolean" Nullable="false" />
+    <Property Name="IntValue" Type="Int32" Nullable="false" />
+    <Property Name="DoubleValue" Type="Double" Nullable="false" />
+    <Property Name="StringValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GraphValue" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="TestCompositionProperties" Relationship="Self.FK_TestCompositionPropertiesValues_TestCompositionProperties" FromRole="TestCompositionPropertiesValues" ToRole="TestCompositionProperties" />
+    <NavigationProperty Name="TestCompositions" Relationship="Self.FK_TestCompositionProperties_TestCompositions" FromRole="TestCompositionPropertiesValues" ToRole="TestCompositions" />
+  </EntityType>
+  <EntityType Name="TestCompositions">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Test" Type="Int32" Nullable="false" />
+    <Property Name="Index" Type="Int32" Nullable="false" />
+    <Property Name="TestPhase" Type="Int32" Nullable="false" />
+    <Property Name="SelectedDefault" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="TestCompositionPropertiesValues" Relationship="Self.FK_TestCompositionProperties_TestCompositions" FromRole="TestCompositions" ToRole="TestCompositionPropertiesValues" />
+    <NavigationProperty Name="TestPhases" Relationship="Self.FK_TestComposition_TestPhases" FromRole="TestCompositions" ToRole="TestPhases" />
+    <NavigationProperty Name="Tests" Relationship="Self.FK_TestCompositions_Tests" FromRole="TestCompositions" ToRole="Tests" />
+  </EntityType>
+  <EntityType Name="TestPhases">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Phase" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ParametersValues" Relationship="Self.FK_ParametersValues_TestPhases" FromRole="TestPhases" ToRole="ParametersValues" />
+    <NavigationProperty Name="Phases" Relationship="Self.FK_TestPhases_Phases" FromRole="TestPhases" ToRole="Phases" />
+    <NavigationProperty Name="ResultsConstraints" Relationship="Self.FK_ResultsConstraints_TestPhases" FromRole="TestPhases" ToRole="ResultsConstraints" />
+    <NavigationProperty Name="TestCompositions" Relationship="Self.FK_TestComposition_TestPhases" FromRole="TestPhases" ToRole="TestCompositions" />
+  </EntityType>
+  <EntityType Name="TestProperties">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Test" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="Int32" Nullable="false" />
+    <Property Name="Index" Type="Int32" Nullable="false" />
+    <Property Name="BoolValue" Type="Boolean" Nullable="false" />
+    <Property Name="IntValue" Type="Int32" Nullable="false" />
+    <Property Name="DoubleValue" Type="Double" Nullable="false" />
+    <Property Name="StringValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GraphValue" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Tests" Relationship="Self.FK_TestProperties_Tests" FromRole="TestProperties" ToRole="Tests" />
+    <NavigationProperty Name="Types" Relationship="Self.FK_TestProperties_Types" FromRole="TestProperties" ToRole="Types" />
+  </EntityType>
+  <EntityType Name="Tests">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="PNTests" Relationship="Self.FK_PNTests_Tests" FromRole="Tests" ToRole="PNTests" />
+    <NavigationProperty Name="TestCompositions" Relationship="Self.FK_TestCompositions_Tests" FromRole="Tests" ToRole="TestCompositions" />
+    <NavigationProperty Name="TestProperties" Relationship="Self.FK_TestProperties_Tests" FromRole="Tests" ToRole="TestProperties" />
+  </EntityType>
+  <EntityType Name="Types">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ExecutionParameters" Relationship="Self.FK_ExecutionParameters_Types" FromRole="Types" ToRole="ExecutionParameters" />
+    <NavigationProperty Name="ExecutionResults" Relationship="Self.FK_ExecutionResults_Types" FromRole="Types" ToRole="ExecutionResults" />
+    <NavigationProperty Name="GlobalParameters" Relationship="Self.FK_GlobalParameters_Types" FromRole="Types" ToRole="GlobalParameters" />
+    <NavigationProperty Name="Parameters" Relationship="Self.FK_Parameters_Types" FromRole="Types" ToRole="Parameters" />
+    <NavigationProperty Name="PNProperties" Relationship="Self.FK_PNProperties_Types" FromRole="Types" ToRole="PNProperties" />
+    <NavigationProperty Name="PNSNProperties" Relationship="Self.FK_PNSNProperties_Types" FromRole="Types" ToRole="PNSNProperties" />
+    <NavigationProperty Name="Results" Relationship="Self.FK_Results_Types" FromRole="Types" ToRole="Results" />
+    <NavigationProperty Name="SNProperties" Relationship="Self.FK_SNProperties_Types" FromRole="Types" ToRole="SNProperties" />
+    <NavigationProperty Name="TestCompositionProperties" Relationship="Self.FK_TestCompositionProperties_Types1" FromRole="Types" ToRole="TestCompositionProperties" />
+    <NavigationProperty Name="TestProperties" Relationship="Self.FK_TestProperties_Types" FromRole="Types" ToRole="TestProperties" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Role" Type="Int32" Nullable="false" />
+    <Property Name="Editable" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Roles" Relationship="Self.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
+  </EntityType>
+  <Association Name="FK_Alarms_MainConfigurations">
+    <End Role="MainConfigurations" Type="Self.MainConfigurations" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Alarms" Type="Self.Alarms" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MainConfigurations">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Alarms">
+        <PropertyRef Name="MainConfiguration" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AnalogChannelsScaling_MainConfigurations">
+    <End Role="MainConfigurations" Type="Self.MainConfigurations" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AnalogChannelsScaling" Type="Self.AnalogChannelsScaling" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MainConfigurations">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AnalogChannelsScaling">
+        <PropertyRef Name="MainConfiguration" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ShowedAuxiliaryResults_AuxiliaryResults">
+    <End Role="AuxiliaryResults" Type="Self.AuxiliaryResults" Multiplicity="1" />
+    <End Role="ShowedAuxiliaryResults" Type="Self.ShowedAuxiliaryResults" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AuxiliaryResults">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ShowedAuxiliaryResults">
+        <PropertyRef Name="AuxiliaryResult" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExecutionAuxiliaryResults_ExecutionResults">
+    <End Role="ExecutionResults" Type="Self.ExecutionResults" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ExecutionAuxiliaryResults" Type="Self.ExecutionAuxiliaryResults" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExecutionResults">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ExecutionAuxiliaryResults">
+        <PropertyRef Name="ExecutionResult" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExecutionParameters_Types">
+    <End Role="Types" Type="Self.Types" Multiplicity="1" />
+    <End Role="ExecutionParameters" Type="Self.ExecutionParameters" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Types">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ExecutionParameters">
+        <PropertyRef Name="Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExecutionsParameters_Execution">
+    <End Role="Executions" Type="Self.Executions" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ExecutionParameters" Type="Self.ExecutionParameters" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Executions">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ExecutionParameters">
+        <PropertyRef Name="Execution" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExecutionResults_ResultStatuses">
+    <End Role="ResultStatuses" Type="Self.ResultStatuses" Multiplicity="1" />
+    <End Role="ExecutionResults" Type="Self.ExecutionResults" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ResultStatuses">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ExecutionResults">
+        <PropertyRef Name="ResultStatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExecutionResults_Types">
+    <End Role="Types" Type="Self.Types" Multiplicity="1" />
+    <End Role="ExecutionResults" Type="Self.ExecutionResults" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Types">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ExecutionResults">
+        <PropertyRef Name="Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExecutionsResults_Execution">
+    <End Role="Executions" Type="Self.Executions" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ExecutionResults" Type="Self.ExecutionResults" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Executions">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ExecutionResults">
+        <PropertyRef Name="Execution" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Executions_ResultStatuses">
+    <End Role="ResultStatuses" Type="Self.ResultStatuses" Multiplicity="1" />
+    <End Role="Executions" Type="Self.Executions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ResultStatuses">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Executions">
+        <PropertyRef Name="ResultStatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Executions_SerialNumbers">
+    <End Role="SerialNumbers" Type="Self.SerialNumbers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Executions" Type="Self.Executions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SerialNumbers">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Executions">
+        <PropertyRef Name="SerialNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Executions_SNTestPhases">
+    <End Role="SNTestPhases" Type="Self.SNTestPhases" Multiplicity="1" />
+    <End Role="Executions" Type="Self.Executions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SNTestPhases">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Executions">
+        <PropertyRef Name="SNTestPhase" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GlobalParameters_MainConfigurations">
+    <End Role="MainConfigurations" Type="Self.MainConfigurations" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="GlobalParameters" Type="Self.GlobalParameters" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MainConfigurations">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GlobalParameters">
+        <PropertyRef Name="MainConfiguration" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GlobalParameters_Types">
+    <End Role="Types" Type="Self.Types" Multiplicity="1" />
+    <End Role="GlobalParameters" Type="Self.GlobalParameters" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Types">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GlobalParameters">
+        <PropertyRef Name="Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MiscDataLocal_MainConfigurations">
+    <End Role="MainConfigurations" Type="Self.MainConfigurations" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MiscDataLocal" Type="Self.MiscDataLocal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MainConfigurations">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MiscDataLocal">
+        <PropertyRef Name="MainConfiguration" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SNGenerator_MainConfigurations">
+    <End Role="MainConfigurations" Type="Self.MainConfigurations" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SNGenerator" Type="Self.SNGenerator" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MainConfigurations">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SNGenerator">
+        <PropertyRef Name="MainConfiguration" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Parameters_Phases">
+    <End Role="Phases" Type="Self.Phases" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Parameters" Type="Self.Parameters" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Phases">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Parameters">
+        <PropertyRef Name="Phase" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Parameters_Types">
+    <End Role="Types" Type="Self.Types" Multiplicity="1" />
+    <End Role="Parameters" Type="Self.Parameters" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Types">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Parameters">
+        <PropertyRef Name="Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ParametersValues_Parameters">
+    <End Role="Parameters" Type="Self.Parameters" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ParametersValues" Type="Self.ParametersValues" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parameters">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ParametersValues">
+        <PropertyRef Name="Parameter" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ParametersValues_TestPhases">
+    <End Role="TestPhases" Type="Self.TestPhases" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ParametersValues" Type="Self.ParametersValues" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TestPhases">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ParametersValues">
+        <PropertyRef Name="TestPhase" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PNProperties_PartNumbers">
+    <End Role="PartNumbers" Type="Self.PartNumbers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PNProperties" Type="Self.PNProperties" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PartNumbers">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PNProperties">
+        <PropertyRef Name="PartNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PNSNProperties_PartNumbers">
+    <End Role="PartNumbers" Type="Self.PartNumbers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PNSNProperties" Type="Self.PNSNProperties" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PartNumbers">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PNSNProperties">
+        <PropertyRef Name="PartNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PNTests_PartNumbers">
+    <End Role="PartNumbers" Type="Self.PartNumbers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PNTests" Type="Self.PNTests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PartNumbers">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PNTests">
+        <PropertyRef Name="PartNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RolePermissions_Permissions">
+    <End Role="Permissions" Type="Self.Permissions" Multiplicity="1" />
+    <End Role="RolePermissions" Type="Self.RolePermissions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Permissions">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RolePermissions">
+        <PropertyRef Name="Permission" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Results_Phases">
+    <End Role="Phases" Type="Self.Phases" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Results" Type="Self.Results" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Phases">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Results">
+        <PropertyRef Name="Phase" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TestPhases_Phases">
+    <End Role="Phases" Type="Self.Phases" Multiplicity="1" />
+    <End Role="TestPhases" Type="Self.TestPhases" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Phases">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TestPhases">
+        <PropertyRef Name="Phase" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PNProperties_Types">
+    <End Role="Types" Type="Self.Types" Multiplicity="1" />
+    <End Role="PNProperties" Type="Self.PNProperties" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Types">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PNProperties">
+        <PropertyRef Name="Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PNSNProperties_Types">
+    <End Role="Types" Type="Self.Types" Multiplicity="1" />
+    <End Role="PNSNProperties" Type="Self.PNSNProperties" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Types">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PNSNProperties">
+        <PropertyRef Name="Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PNTests_Tests">
+    <End Role="Tests" Type="Self.Tests" Multiplicity="1" />
+    <End Role="PNTests" Type="Self.PNTests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tests">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PNTests">
+        <PropertyRef Name="Test" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Results_Types">
+    <End Role="Types" Type="Self.Types" Multiplicity="1" />
+    <End Role="Results" Type="Self.Results" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Types">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Results">
+        <PropertyRef Name="Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResultsConstraints_Results">
+    <End Role="Results" Type="Self.Results" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ResultsConstraints" Type="Self.ResultsConstraints" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Results">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ResultsConstraints">
+        <PropertyRef Name="Result" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ShowedAuxiliaryResults_Results">
+    <End Role="Results" Type="Self.Results" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ShowedAuxiliaryResults" Type="Self.ShowedAuxiliaryResults" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Results">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ShowedAuxiliaryResults">
+        <PropertyRef Name="Result" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResultsConstraints_TestPhases">
+    <End Role="TestPhases" Type="Self.TestPhases" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ResultsConstraints" Type="Self.ResultsConstraints" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TestPhases">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ResultsConstraints">
+        <PropertyRef Name="TestPhase" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RolePermissions_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RolePermissions" Type="Self.RolePermissions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RolePermissions">
+        <PropertyRef Name="Role" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="Role" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SNInformations_SerialNumbers">
+    <End Role="SerialNumbers" Type="Self.SerialNumbers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SNInformations" Type="Self.SNInformations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SerialNumbers">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SNInformations">
+        <PropertyRef Name="SerialNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SNProperties_SNInformations">
+    <End Role="SNInformations" Type="Self.SNInformations" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SNProperties" Type="Self.SNProperties" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SNInformations">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SNProperties">
+        <PropertyRef Name="SNInformation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SNTestPhases_SNInformations">
+    <End Role="SNInformations" Type="Self.SNInformations" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SNTestPhases" Type="Self.SNTestPhases" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SNInformations">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SNTestPhases">
+        <PropertyRef Name="SNInformation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SNProperties_Types">
+    <End Role="Types" Type="Self.Types" Multiplicity="1" />
+    <End Role="SNProperties" Type="Self.SNProperties" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Types">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SNProperties">
+        <PropertyRef Name="Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TestCompositionProperties_Types1">
+    <End Role="Types" Type="Self.Types" Multiplicity="1" />
+    <End Role="TestCompositionProperties" Type="Self.TestCompositionProperties" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Types">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TestCompositionProperties">
+        <PropertyRef Name="Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TestCompositionPropertiesValues_TestCompositionProperties">
+    <End Role="TestCompositionProperties" Type="Self.TestCompositionProperties" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TestCompositionPropertiesValues" Type="Self.TestCompositionPropertiesValues" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TestCompositionProperties">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TestCompositionPropertiesValues">
+        <PropertyRef Name="TestCompositionProperty" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TestCompositionProperties_TestCompositions">
+    <End Role="TestCompositions" Type="Self.TestCompositions" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TestCompositionPropertiesValues" Type="Self.TestCompositionPropertiesValues" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TestCompositions">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TestCompositionPropertiesValues">
+        <PropertyRef Name="TestComposition" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TestComposition_TestPhases">
+    <End Role="TestPhases" Type="Self.TestPhases" Multiplicity="1" />
+    <End Role="TestCompositions" Type="Self.TestCompositions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TestPhases">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TestCompositions">
+        <PropertyRef Name="TestPhase" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TestCompositions_Tests">
+    <End Role="Tests" Type="Self.Tests" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TestCompositions" Type="Self.TestCompositions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tests">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TestCompositions">
+        <PropertyRef Name="Test" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TestProperties_Tests">
+    <End Role="Tests" Type="Self.Tests" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TestProperties" Type="Self.TestProperties" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tests">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TestProperties">
+        <PropertyRef Name="Test" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TestProperties_Types">
+    <End Role="Types" Type="Self.Types" Multiplicity="1" />
+    <End Role="TestProperties" Type="Self.TestProperties" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Types">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TestProperties">
+        <PropertyRef Name="Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="APSWDatabaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Alarms" EntityType="Self.Alarms" />
+    <EntitySet Name="AnalogChannelsScaling" EntityType="Self.AnalogChannelsScaling" />
+    <EntitySet Name="AuxiliaryResults" EntityType="Self.AuxiliaryResults" />
+    <EntitySet Name="CustomTest" EntityType="Self.CustomTest" />
+    <EntitySet Name="ExecutionAuxiliaryResults" EntityType="Self.ExecutionAuxiliaryResults" />
+    <EntitySet Name="ExecutionParameters" EntityType="Self.ExecutionParameters" />
+    <EntitySet Name="ExecutionResults" EntityType="Self.ExecutionResults" />
+    <EntitySet Name="Executions" EntityType="Self.Executions" />
+    <EntitySet Name="GlobalParameters" EntityType="Self.GlobalParameters" />
+    <EntitySet Name="MainConfigurations" EntityType="Self.MainConfigurations" />
+    <EntitySet Name="MiscDataLocal" EntityType="Self.MiscDataLocal" />
+    <EntitySet Name="MiscDataTest" EntityType="Self.MiscDataTest" />
+    <EntitySet Name="Parameters" EntityType="Self.Parameters" />
+    <EntitySet Name="ParametersValues" EntityType="Self.ParametersValues" />
+    <EntitySet Name="PartNumbers" EntityType="Self.PartNumbers" />
+    <EntitySet Name="Permissions" EntityType="Self.Permissions" />
+    <EntitySet Name="Phases" EntityType="Self.Phases" />
+    <EntitySet Name="PNProperties" EntityType="Self.PNProperties" />
+    <EntitySet Name="PNSNProperties" EntityType="Self.PNSNProperties" />
+    <EntitySet Name="PNTests" EntityType="Self.PNTests" />
+    <EntitySet Name="Results" EntityType="Self.Results" />
+    <EntitySet Name="ResultsConstraints" EntityType="Self.ResultsConstraints" />
+    <EntitySet Name="ResultStatuses" EntityType="Self.ResultStatuses" />
+    <EntitySet Name="RolePermissions" EntityType="Self.RolePermissions" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" />
+    <EntitySet Name="SerialNumbers" EntityType="Self.SerialNumbers" />
+    <EntitySet Name="ShowedAuxiliaryResults" EntityType="Self.ShowedAuxiliaryResults" />
+    <EntitySet Name="SNGenerator" EntityType="Self.SNGenerator" />
+    <EntitySet Name="SNInformations" EntityType="Self.SNInformations" />
+    <EntitySet Name="SNProperties" EntityType="Self.SNProperties" />
+    <EntitySet Name="SNTestPhases" EntityType="Self.SNTestPhases" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="TestCompositionProperties" EntityType="Self.TestCompositionProperties" />
+    <EntitySet Name="TestCompositionPropertiesValues" EntityType="Self.TestCompositionPropertiesValues" />
+    <EntitySet Name="TestCompositions" EntityType="Self.TestCompositions" />
+    <EntitySet Name="TestPhases" EntityType="Self.TestPhases" />
+    <EntitySet Name="TestProperties" EntityType="Self.TestProperties" />
+    <EntitySet Name="Tests" EntityType="Self.Tests" />
+    <EntitySet Name="Types" EntityType="Self.Types" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <AssociationSet Name="FK_Alarms_MainConfigurations" Association="Self.FK_Alarms_MainConfigurations">
+      <End Role="MainConfigurations" EntitySet="MainConfigurations" />
+      <End Role="Alarms" EntitySet="Alarms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AnalogChannelsScaling_MainConfigurations" Association="Self.FK_AnalogChannelsScaling_MainConfigurations">
+      <End Role="MainConfigurations" EntitySet="MainConfigurations" />
+      <End Role="AnalogChannelsScaling" EntitySet="AnalogChannelsScaling" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ShowedAuxiliaryResults_AuxiliaryResults" Association="Self.FK_ShowedAuxiliaryResults_AuxiliaryResults">
+      <End Role="AuxiliaryResults" EntitySet="AuxiliaryResults" />
+      <End Role="ShowedAuxiliaryResults" EntitySet="ShowedAuxiliaryResults" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExecutionAuxiliaryResults_ExecutionResults" Association="Self.FK_ExecutionAuxiliaryResults_ExecutionResults">
+      <End Role="ExecutionResults" EntitySet="ExecutionResults" />
+      <End Role="ExecutionAuxiliaryResults" EntitySet="ExecutionAuxiliaryResults" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExecutionParameters_Types" Association="Self.FK_ExecutionParameters_Types">
+      <End Role="Types" EntitySet="Types" />
+      <End Role="ExecutionParameters" EntitySet="ExecutionParameters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExecutionsParameters_Execution" Association="Self.FK_ExecutionsParameters_Execution">
+      <End Role="Executions" EntitySet="Executions" />
+      <End Role="ExecutionParameters" EntitySet="ExecutionParameters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExecutionResults_ResultStatuses" Association="Self.FK_ExecutionResults_ResultStatuses">
+      <End Role="ResultStatuses" EntitySet="ResultStatuses" />
+      <End Role="ExecutionResults" EntitySet="ExecutionResults" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExecutionResults_Types" Association="Self.FK_ExecutionResults_Types">
+      <End Role="Types" EntitySet="Types" />
+      <End Role="ExecutionResults" EntitySet="ExecutionResults" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExecutionsResults_Execution" Association="Self.FK_ExecutionsResults_Execution">
+      <End Role="Executions" EntitySet="Executions" />
+      <End Role="ExecutionResults" EntitySet="ExecutionResults" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Executions_ResultStatuses" Association="Self.FK_Executions_ResultStatuses">
+      <End Role="ResultStatuses" EntitySet="ResultStatuses" />
+      <End Role="Executions" EntitySet="Executions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Executions_SerialNumbers" Association="Self.FK_Executions_SerialNumbers">
+      <End Role="SerialNumbers" EntitySet="SerialNumbers" />
+      <End Role="Executions" EntitySet="Executions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Executions_SNTestPhases" Association="Self.FK_Executions_SNTestPhases">
+      <End Role="SNTestPhases" EntitySet="SNTestPhases" />
+      <End Role="Executions" EntitySet="Executions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GlobalParameters_MainConfigurations" Association="Self.FK_GlobalParameters_MainConfigurations">
+      <End Role="MainConfigurations" EntitySet="MainConfigurations" />
+      <End Role="GlobalParameters" EntitySet="GlobalParameters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GlobalParameters_Types" Association="Self.FK_GlobalParameters_Types">
+      <End Role="Types" EntitySet="Types" />
+      <End Role="GlobalParameters" EntitySet="GlobalParameters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MiscDataLocal_MainConfigurations" Association="Self.FK_MiscDataLocal_MainConfigurations">
+      <End Role="MainConfigurations" EntitySet="MainConfigurations" />
+      <End Role="MiscDataLocal" EntitySet="MiscDataLocal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SNGenerator_MainConfigurations" Association="Self.FK_SNGenerator_MainConfigurations">
+      <End Role="MainConfigurations" EntitySet="MainConfigurations" />
+      <End Role="SNGenerator" EntitySet="SNGenerator" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Parameters_Phases" Association="Self.FK_Parameters_Phases">
+      <End Role="Phases" EntitySet="Phases" />
+      <End Role="Parameters" EntitySet="Parameters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Parameters_Types" Association="Self.FK_Parameters_Types">
+      <End Role="Types" EntitySet="Types" />
+      <End Role="Parameters" EntitySet="Parameters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ParametersValues_Parameters" Association="Self.FK_ParametersValues_Parameters">
+      <End Role="Parameters" EntitySet="Parameters" />
+      <End Role="ParametersValues" EntitySet="ParametersValues" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ParametersValues_TestPhases" Association="Self.FK_ParametersValues_TestPhases">
+      <End Role="TestPhases" EntitySet="TestPhases" />
+      <End Role="ParametersValues" EntitySet="ParametersValues" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PNProperties_PartNumbers" Association="Self.FK_PNProperties_PartNumbers">
+      <End Role="PartNumbers" EntitySet="PartNumbers" />
+      <End Role="PNProperties" EntitySet="PNProperties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PNSNProperties_PartNumbers" Association="Self.FK_PNSNProperties_PartNumbers">
+      <End Role="PartNumbers" EntitySet="PartNumbers" />
+      <End Role="PNSNProperties" EntitySet="PNSNProperties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PNTests_PartNumbers" Association="Self.FK_PNTests_PartNumbers">
+      <End Role="PartNumbers" EntitySet="PartNumbers" />
+      <End Role="PNTests" EntitySet="PNTests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RolePermissions_Permissions" Association="Self.FK_RolePermissions_Permissions">
+      <End Role="Permissions" EntitySet="Permissions" />
+      <End Role="RolePermissions" EntitySet="RolePermissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Results_Phases" Association="Self.FK_Results_Phases">
+      <End Role="Phases" EntitySet="Phases" />
+      <End Role="Results" EntitySet="Results" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TestPhases_Phases" Association="Self.FK_TestPhases_Phases">
+      <End Role="Phases" EntitySet="Phases" />
+      <End Role="TestPhases" EntitySet="TestPhases" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PNProperties_Types" Association="Self.FK_PNProperties_Types">
+      <End Role="Types" EntitySet="Types" />
+      <End Role="PNProperties" EntitySet="PNProperties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PNSNProperties_Types" Association="Self.FK_PNSNProperties_Types">
+      <End Role="Types" EntitySet="Types" />
+      <End Role="PNSNProperties" EntitySet="PNSNProperties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PNTests_Tests" Association="Self.FK_PNTests_Tests">
+      <End Role="Tests" EntitySet="Tests" />
+      <End Role="PNTests" EntitySet="PNTests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Results_Types" Association="Self.FK_Results_Types">
+      <End Role="Types" EntitySet="Types" />
+      <End Role="Results" EntitySet="Results" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResultsConstraints_Results" Association="Self.FK_ResultsConstraints_Results">
+      <End Role="Results" EntitySet="Results" />
+      <End Role="ResultsConstraints" EntitySet="ResultsConstraints" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ShowedAuxiliaryResults_Results" Association="Self.FK_ShowedAuxiliaryResults_Results">
+      <End Role="Results" EntitySet="Results" />
+      <End Role="ShowedAuxiliaryResults" EntitySet="ShowedAuxiliaryResults" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResultsConstraints_TestPhases" Association="Self.FK_ResultsConstraints_TestPhases">
+      <End Role="TestPhases" EntitySet="TestPhases" />
+      <End Role="ResultsConstraints" EntitySet="ResultsConstraints" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RolePermissions_Roles" Association="Self.FK_RolePermissions_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="RolePermissions" EntitySet="RolePermissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SNInformations_SerialNumbers" Association="Self.FK_SNInformations_SerialNumbers">
+      <End Role="SerialNumbers" EntitySet="SerialNumbers" />
+      <End Role="SNInformations" EntitySet="SNInformations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SNProperties_SNInformations" Association="Self.FK_SNProperties_SNInformations">
+      <End Role="SNInformations" EntitySet="SNInformations" />
+      <End Role="SNProperties" EntitySet="SNProperties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SNTestPhases_SNInformations" Association="Self.FK_SNTestPhases_SNInformations">
+      <End Role="SNInformations" EntitySet="SNInformations" />
+      <End Role="SNTestPhases" EntitySet="SNTestPhases" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SNProperties_Types" Association="Self.FK_SNProperties_Types">
+      <End Role="Types" EntitySet="Types" />
+      <End Role="SNProperties" EntitySet="SNProperties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TestCompositionProperties_Types1" Association="Self.FK_TestCompositionProperties_Types1">
+      <End Role="Types" EntitySet="Types" />
+      <End Role="TestCompositionProperties" EntitySet="TestCompositionProperties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TestCompositionPropertiesValues_TestCompositionProperties" Association="Self.FK_TestCompositionPropertiesValues_TestCompositionProperties">
+      <End Role="TestCompositionProperties" EntitySet="TestCompositionProperties" />
+      <End Role="TestCompositionPropertiesValues" EntitySet="TestCompositionPropertiesValues" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TestCompositionProperties_TestCompositions" Association="Self.FK_TestCompositionProperties_TestCompositions">
+      <End Role="TestCompositions" EntitySet="TestCompositions" />
+      <End Role="TestCompositionPropertiesValues" EntitySet="TestCompositionPropertiesValues" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TestComposition_TestPhases" Association="Self.FK_TestComposition_TestPhases">
+      <End Role="TestPhases" EntitySet="TestPhases" />
+      <End Role="TestCompositions" EntitySet="TestCompositions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TestCompositions_Tests" Association="Self.FK_TestCompositions_Tests">
+      <End Role="Tests" EntitySet="Tests" />
+      <End Role="TestCompositions" EntitySet="TestCompositions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TestProperties_Tests" Association="Self.FK_TestProperties_Tests">
+      <End Role="Tests" EntitySet="Tests" />
+      <End Role="TestProperties" EntitySet="TestProperties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TestProperties_Types" Association="Self.FK_TestProperties_Types">
+      <End Role="Types" EntitySet="Types" />
+      <End Role="TestProperties" EntitySet="TestProperties" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
